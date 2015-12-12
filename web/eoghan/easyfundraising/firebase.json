@@ -1,0 +1,9 @@
+{
+  "firebase": "easyfundraising",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
