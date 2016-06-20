@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<link rel='stylesheet', href = 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/paper/bootstrap.min.css'>
+
+<link rel='stylesheet' href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'/>
+
+<link rel="stylesheet" href="./css/SignUp/stylings_basic.css">
+<link rel="stylesheet" href="./sass/sass_basic.css">
+
+</head>
+
+<body>
+
+<div class="signUpEnv">
+	<h3 class="text-center"><b>easyfundraising</b></h3>
+
+	<div class="col-md-offset-4 col-md-4 col-sm-offset-1 col-sm-10">
+
+		<div class="signUp panel panel-default">
+			<div class="panel-heading">
+				<div data-bind="if: showDetails" class="details-header">
+					<h3 class="panel-title"><b>Details</b></h3>
+				</div>
+				<div data-bind="if: showQuestions" class="questions-header">
+					<h3 class="panel-title"><b>Hello, <span data-bind='text: fullName'> </span>!</b></h3>
+				</div>
+				<div data-bind="if: showPayment" class="payment-header">
+					<h3 class="panel-title"><b>Ok <span data-bind='text: firstName'> </span>, this is the final section.</b></h3>
+				</div>
+			</div>
+			<div class="panel-body">
+
+				<!--DETAILS STAGE-->
+
+				<div data-bind="if: showDetails" class="details-main text-left">
+					<form>
+						<div class="form-group">
+							<label>First name</label>
+							<input type="text" class="form-control" data-bind='value: firstName' placeholder="first name">
+						</div>
+						<div class="form-group">
+							<label>Last name</label>
+							<input type="text" class="form-control" data-bind='value: lastName' placeholder="last name">
+						</div>
+						<div class="form-group">
+							<label>Leaderboard name</label>
+							<input type="text" class="form-control" data-bind='value: leaderboardName' placeholder="leaderboard name">
+						</div>
+						<div class="form-group">
+							<label>Phone number</label>
+							<input type="text" class="form-control" data-bind='value: phoneNumber' placeholder="not required">
+						</div>
+						<div class="form-group">
+							<label>Email address</label>
+							<input type="email" class="form-control" data-bind='value: email' placeholder="email">
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox"> Recieve email updates
+							</label>
+						</div>
+						<div class="text-center">
+							<div data-bind="if: detailsComplete()">
+								<button data-bind="click: clickQuestionsStage" class="btn btn-success">Next</button>
+							</div>
+							<div data-bind="if: !detailsComplete()">
+								<button data-bind="click: clickQuestionsStage" class="btn btn-danger disabled">Next</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<!--QUESTIONS STAGE-->
+
+				<div data-bind="if: showQuestions" class="questions-main">
+
+					<div class="text-left" data-bind="foreach: questions">
+						<div class="question">
+						    <h4 data-bind="text: $data.question"></h4>
+						    <div class="row">
+						    	<div data-bind="template: { name: 'answers-template', foreach: answers}"></div>
+								<script type="text/html" id="answers-template">
+									<div class="answers">
+										<div data-bind="visible:!select">
+											<button type="button" id="answer" class="answer btn btn-default" data-bind="text: answer, click: function() { $root.selectAnswer($parent, $data) }"></button>
+											<button type="button" class="points btn btn-default disabled custom-disable" data-bind="text: points"></button>
+										</div>
+										<div data-bind="visible:select">
+											<button type="button" id="answer" class="answer btn btn-primary" data-bind="text: answer, click: function() { $root.selectAnswer($parent, $data) }"></button>
+											<button type="button" class="points btn btn-default disabled custom-disable" data-bind="text: points"></button>
+										</div>
+									</div>
+								</script>
+							</div>
+						</div>
+					</div>
+					<p class="progress-btns">
+						<div class="btn-group" data-bind="if: questionsComplete()">
+							<button data-bind="click: clickDetailsStage" class="btn btn-success">Previous</button>
+							<button data-bind="click: clickPaymentStage" class="btn btn-success">Next</button>
+						</div>
+						<div class="btn-group" data-bind="if: !questionsComplete()">
+							<button data-bind="click: clickDetailsStage" class="btn btn-success">Previous</button>
+							<button data-bind="click: clickPaymentStage" class="btn btn-danger disabled">Next</button>
+						</div>
+					</p>
+				</div>
+
+				<!--PAYMENT STAGE-->
+
+				<div data-bind="if: showPayment" class="payment-main">
+
+					<p>Payment is 10 euro.</p>
+					<p class="progress-btns">
+						<div class="btn-group" data-bind="if: paymentComplete()">
+							<button data-bind="click: clickQuestionsStage" class="btn btn-success">Previous</button>
+							<!--<button data-bind="click: submitPayment" class="btn btn-success">Finish</button>-->
+							<button class="btn btn-danger disabled"><a href="./leaderboard.html">Finish</a></button>
+						</div>
+						<div class="btn-group" data-bind="if: !paymentComplete()">
+							<button data-bind="click: clickQuestionsStage" class="btn btn-success">Previous</button>
+							<!--<button data-bind="click: submitPayment" class="btn btn-danger disabled">Finish</button>-->
+							<button class="btn btn-danger disabled"><a href="./leaderboard.html">Finish</a></button>
+						</div>
+					</p>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="progress-bar">
+			<div data-placement="bottom" data-content="DETAILS" data-trigger="manual" data-bind="click: clickDetailsStage" id="firstStep" class="dot1 dot red"></div>
+			<div class="bar blue"></div>
+
+			<div data-placement="bottom" data-bind="click: clickQuestionsStage" data-content="QUESTIONS" data-trigger="manual" id="secondStep" class="dot2 dot red"></div>
+			<div class="bar blue"></div>
+
+			<div data-placement="bottom" style="margin-right:20px;" data-content="PAYMENTS" data-trigger="manual" data-bind="click: clickPaymentStage" id="thirdStep" class="dot3 dot red"></div>
+		</div>
+
+	</div>
+
+</div>
+
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="./js/knockout.js"></script>
+
+<script src="./js/SignUp/data_model.js"></script>
+
+<script src="./js/SignUp/signUp.js"></script>
+
+</body>
+
+</html>

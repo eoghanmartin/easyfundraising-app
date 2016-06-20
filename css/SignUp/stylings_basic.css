@@ -1,0 +1,64 @@
+
+.signUpEnv input {
+	font-family: Arial;
+}
+
+.signUpEnv b {
+	font-weight: bold;
+}
+
+.signUpEnv p {
+	margin-top: 0.9em;
+	margin-bottom: 0.9em;
+}
+
+.signUpEnv h2 {
+	margin-top: 0.4em;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.signUp {
+	margin-left: auto;
+    margin-right: auto;
+    min-height: 30em;
+    position:relative;
+    text-align:center;
+}
+
+.answers {
+	margin: 3px 10%;
+}
+.answer {
+	width: 80%;
+}
+.points {
+	width: 15%;
+}
+
+.progress-btns {
+	padding-top:1em;
+}
+
+.popover-content {
+	color: dodgerblue;
+}
+
+.panel-heading {
+	color: #ffffff!important;
+	background-color: dodgerblue!important;
+}
+
+.panel-heading h3 {
+	color: #ffffff!important;
+}
+
+.custom-disable {
+    background-color: #F5F5F5 !important;
+	cursor: pointer !important;
+}
+
+.custom-disable :hover {
+    background-color: #F5F5F5 !important;
+	cursor: pointer !important;
+}

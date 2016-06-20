@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<link rel='stylesheet', href = 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/paper/bootstrap.min.css'>
+
+<link rel='stylesheet' href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'/>
+
+<link rel="stylesheet" href="./css/Leaderboard/bootstrap-table.css">
+
+<link rel="stylesheet" href="./css/Leaderboard/stylings_leaderboard.css">
+
+<link rel="stylesheet" href="./sass/sass_basic.css">
+
+</head>
+
+<body>
+
+<div class="leaderboardEnv">
+
+	<h3 class="text-center"><b>easyfundraising</b></h3>
+
+	<div class="col-md-offset-4 col-md-4 col-sm-offset-1 col-sm-10">
+		<div class="toolbar"></div>
+		<table class="table table-hover"
+			data-toggle="table"
+			data-classes="table table-hover"
+			data-toolbar=".toolbar"
+			data-search="true"
+			data-pagination="true"
+			data-id-field="person_id">
+		    <thead>
+			    <tr>
+			    	<th data-width="10%" data-formatter="operateFormatter" data-events="operateEvents"></th>
+			        <th data-sortable="true" data-field="leaderboard_name">Name</th>
+			        <th data-width="10%" data-sortable="true" data-field="points">Points</th>
+			        <th data-visible="false" data-field="person_id">ID</th>
+			    </tr>
+		    </thead>
+		    <tbody>
+		    <!-- ko foreach: leaderboard_data -->
+		        <tr>
+		        	<td class="text"></td>
+		            <td class="text" data-bind="text: leaderboard_name"></td>
+		            <td class="text" data-bind="text: points"></td>
+		            <td class="text" data-visible="false"  data-bind="text: person_id"></td>
+		        </tr>
+		    <!-- /ko -->
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" data-bind="with: modal_data">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" data-bind="text: leaderboard_name"></h4>
+      </div>
+      <div class="modal-body">
+      	<div data-bind="foreach: questions">
+      		<div data-bind="if: $data.lost">
+	      		<div class="alert alert-danger">
+		      		<h4 data-bind="text: question"></h4>
+		      		<div class="btn-group">
+			      		<button type="button" class="btn btn-primary" data-bind="text: answer"></button>
+						<button type="button" class="btn btn-default disabled custom-disable" data-bind="text: points"></button>
+					</div>
+	      		</div>
+      		</div>
+      		<div data-bind="if: $data.won">
+	      		<div class="alert alert-success">
+		      		<h4 data-bind="text: question"></h4>
+		      		<div class="btn-group">
+			      		<button type="button" class="btn btn-primary" data-bind="text: answer"></button>
+						<button type="button" class="btn btn-default disabled custom-disable" data-bind="text: points"></button>
+					</div>
+	      		</div>
+      		</div>
+      		<div data-bind="if: $data.notPlayed">
+	      		<div class="alert alert-info">
+		      		<h4 data-bind="text: question"></h4>
+		      		<div class="btn-group">
+			      		<button type="button" class="btn btn-primary" data-bind="text: answer"></button>
+						<button type="button" class="btn btn-default disabled custom-disable" data-bind="text: points"></button>
+					</div>
+	      		</div>
+      		</div>
+    	</div>
+      </div>
+      <div class="modal-footer">
+      	<div class="btn-group">
+	      	<button type="button" class="btn btn-default" data-dismiss="modal">Previous</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="./js/Leaderboard/bootstrap-table.js"></script>
+
+<script src="./js/knockout.js"></script>
+
+<script src="./js/Leaderboard/data_model.js"></script>
+
+<script src="./js/Leaderboard/leaderboard.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+@media screen and (max-width: 780px) {
+  .signUpEnv {
+    max-height: 34em;
+    font-size: 2.0rem; } }
+@media screen and (max-width: 780px) {
+  .signUpEnv input[type="text"] {
+    font-size: 2.3rem; } }
+@media screen and (max-width: 780px) {
+  .signUpEnv input[type="email"] {
+    font-size: 2.3rem; } }
+
+@media screen and (max-width: 780px) {
+  .leaderboardEnv {
+    font-size: 2.0rem; } }
+
+.progress-bar {
+  width: 80%;
+  display: flex;
+  position: absolute;
+  height: 14px;
+  margin: 0 10%;
+  align-items: center;
+  background-color: #ffffff;
+  /* Color */ }
+  .progress-bar .dot {
+    background-color: #aaa;
+    max-width: 14px;
+    height: 14px;
+    flex-grow: 1;
+    border-radius: 50%;
+    border: 2px solid dodgerblue; }
+  .progress-bar .bar {
+    background-color: #ddd;
+    flex-grow: 1;
+    height: 2px; }
+  .progress-bar .blue {
+    background-color: dodgerblue; }
+  .progress-bar .green {
+    background-color: chartreuse; }
+  .progress-bar .red {
+    background-color: tomato; }
+
+/*# sourceMappingURL=sass_basic.css.map */

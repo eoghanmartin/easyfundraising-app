@@ -1,0 +1,62 @@
+$break-small: 780px;
+$break-large: 1200px;
+
+.signUpEnv {
+  @media screen and (max-width: $break-small) {
+      max-height: 34em;
+      font-size: 2.0rem;
+  }
+  input[type="text"] {
+    @media screen and (max-width: $break-small) {
+        font-size: 2.3rem;
+    }
+  }
+  input[type="email"] {
+    @media screen and (max-width: $break-small) {
+        font-size: 2.3rem;
+    }
+  }
+}
+
+.leaderboardEnv {
+  @media screen and (max-width: $break-small) {
+    font-size: 2.0rem;
+  }
+}
+
+// The progress bar
+.progress-bar {
+    width: 80%;
+    display: flex;
+    position: absolute;
+    height: 14px;
+    margin: 0 10%;
+    align-items: center;
+    background-color: #ffffff;
+
+  & .dot {
+    background-color: #aaa;
+    max-width: 14px;
+    height: 14px;
+    flex-grow: 1;
+    border-radius: 50%;
+    border: 2px solid dodgerblue;
+  }
+
+  & .bar {
+    background-color: #ddd;
+    flex-grow: 1;
+    height: 2px;
+  }
+  
+  /* Color */
+  & .blue {
+    background-color: dodgerblue;
+  }
+  & .green {
+    background-color: chartreuse;
+  }
+  & .red {
+    background-color: tomato;
+  }
+}
